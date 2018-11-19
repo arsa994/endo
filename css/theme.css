@@ -5111,7 +5111,6 @@ body.dropdowns--hover .nav-sidebar-column .dropdown:hover > .dropdown__container
 .menu-vertical > .dropdown > .dropdown__trigger {
   display: inline-block;
   width: 100%;
-  
 }
 @media all and (max-width: 767px) {
   .dropdown [class*='col-'] + [class*='col-'] {
@@ -5140,7 +5139,6 @@ body.dropdowns--hover .nav-sidebar-column .dropdown:hover > .dropdown__container
 }
 .menu-vertical li.dropdown {
   position: relative;
-  
 }
 .menu-vertical li.dropdown:after {
   content: '\e80c';
@@ -5169,12 +5167,10 @@ body.dropdowns--hover .nav-sidebar-column .dropdown:hover > .dropdown__container
 }
 .menu-vertical + h5 {
   margin-top: 1.85714286em;
-  
 }
 @media all and (max-width: 990px) {
   .menu-vertical .dropdown.dropdown--active:after {
     opacity: 0;
-    
   }
 }
 @media all and (min-width: 991px) {
