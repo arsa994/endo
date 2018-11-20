@@ -116,6 +116,10 @@ http://flickity.metafizzy.co
 
 .flickity-rtl .flickity-page-dots { direction: rtl; }
 
+button[type="button"]:not([class*='col-']) {
+  width: 2% !important;
+}
+
 .flickity-page-dots .dot {
   display: inline-block;
   width: 10px;
