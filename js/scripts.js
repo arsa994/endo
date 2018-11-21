@@ -2377,7 +2377,6 @@ mr = (function (mr, $, window, document){
     "use strict";
     
     var documentReady = function($){
-        
         $('.tabs').each(function(){
             var tabs = $(this);
             tabs.after('<ul class="tabs-content">');
@@ -2413,7 +2412,6 @@ mr = (function (mr, $, window, document){
         });
         
         $('.tabs li.active').trigger('click');
-        
     };
 
     mr.tabs = {

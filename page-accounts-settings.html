@@ -70,7 +70,7 @@
                             <div class="boxed boxed--lg boxed--border">
                                 <div id="account-profile" class="account-tab">
                                     <h4>Profile</h4>
-                                    <form>
+                                    <form onsubmit="return false;">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label>First Name:</label>
@@ -82,7 +82,7 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Email Address:</label>
-                                                <input class="aa" type="text" name="aa"/>
+                                                <input class ="email" type="email" name="email" value="" required placeholder="Enter a valid email address">
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Date of birth:</label>
@@ -97,7 +97,7 @@
                                                 <span>Allow my profile to be viewable by guests</span>
                                             </div>
                                             <div class="col-md-3 col-sm-4">
-                                                <button id="buton" type="button" class="btn btn--primary type--uppercase">Save Profile</button>
+                                                <button id="buton"  type="submit" class="btn btn--primary type--uppercase">Save Profile</button>
                                             </div>
                                         </div>
                                     </form>
