@@ -22,6 +22,8 @@ numberGlucosesToday = document.querySelector('.numberGlucosesToday');
 numberInsulinsToday = document.querySelector('.numberInsulinsToday');
 imena = document.querySelectorAll('.userName');
 myform = document.querySelector('.myForm');
+slides = document.querySelector('.slides');
+deleteUser = document.querySelector('.deleteUser');
 
 userName = [];
 
@@ -42,13 +44,13 @@ async function storeData() {
 
     filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!filter.test(email.value)) {
-    //   email.value=email.value;
-      return false;
-    
+        //   email.value=email.value;
+        return false;
+
     }
 
     try {
-       await db.collection("users").doc(`${email.value}`).set({
+        await db.collection("users").doc(`${email.value}`).set({
             birthday: date.value,
             createdat: Date.now(),
             firstname: firstname.value,
@@ -60,7 +62,7 @@ async function storeData() {
                 // console.log(typeof (firstname.value),lastname.value,email.value,`"${date.value}"`);
                 console.log("Document successfully written!");
 
-                // userName.push(firstname.value);
+                userName.push(firstname.value);
                 // console.log(userName[0]);
                 // console.log(userName.length);
                 window.location = this.window.location;
@@ -72,8 +74,8 @@ async function storeData() {
             });
 
     }
-    catch(error){
-         alert("Email is not correct!")
+    catch (error) {
+        alert("Email is not correct!")
     }
 }
 
@@ -118,27 +120,53 @@ db.collection("users").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", (doc.data()).firstname);
-        userName.push((doc.data()).firstname);
-        
-        
+        userName.push((doc.data()).email);
+
+
         // console.log(userName.length);
 
     });
-    for(let s = 0;s<imena.length;s++){
-        // console.log(imena[s]);
-        if(userName[s]){
-        imena[s].innerHTML=userName[s];
+
+    for (let s = 0; s < userName.length; s++) {
+        if (userName[s]) {
+            var markup = 
+            `<li class="col-md-2">
+                <div class="dropdown__content"> 
+                    <i class="icon--lg icon-Checked-User"></i>
+                        <span id="userName" class="userName h5 color--primary">${userName[s]}</span>
+                            <ul class="menu-vertical">
+                                <li> <a class="btn btn--primary type--uppercase" href="./page-accounts-settings.html">
+                                    <span class="btn__text">update info</span> </a> <span class="block type--fine-print">
+                                    </span>
+                                </li>
+                                    <li onclick="remove(${s})">Delete</li>
+                            </ul>
+                </div>
+            </li>`
+            slides.insertAdjacentHTML("afterbegin", markup);
+            
         }
-        else{
-            imena[s].innerHTML = "ne postoji";
+        else {
+            // image without users
         }
     }
+    // console.log(userName[0]);
+   
 
-        
-      
+
 });
 
 
+//DELETE USER
+function remove(s){
+db.collection("users").doc(`${userName[s]}`).delete().then(function() {
+    console.log("Document successfully deleted!");
+    alert(`The user${userName[s]} has been deleted`);
+    window.location = this.window.location;
 
-renderLoader(document.querySelector('.dropdown__content'));
-document.getElementById('buton').addEventListener('click', storeData);
+
+}).catch(function(error) {
+    console.error("Error removing document: ", error);
+});
+}
+// deleteUser.addEventListener('click', removing)
