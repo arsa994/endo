@@ -24,6 +24,8 @@ imena = document.querySelectorAll('.userName');
 myform = document.querySelector('.myForm');
 slides = document.querySelector('.slides');
 deleteUser = document.querySelector('.deleteUser');
+unitsG = document.getElementById('unitsG');
+unitsI = document.getElementById('unitsI');
 
 userName = [];
 
@@ -79,40 +81,103 @@ async function storeData() {
     }
 }
 
+//ADD GLUCOSE 
+
+ function addGlucose() {
+    
+     db.collection("glucoses").doc("glucose"+Date.now()).set({
+            createdat: Date.now(),
+            userId: "email.value",
+            updatedat: Date.now(),
+            val: unitsG.value
+        })
+            .then(function () {
+                alert("Document successfully written!");
+                location.reload();
+
+                
+            })
+            .catch(function (error) {
+                console.error("Error writing document: ", error);
+                console.log("ERRORRRRRRRRRRR");
+                
+            });
+        }
+    
+
+    
+//ADD INSULINE 
+function datetoday(){
+    Date.now();
+}
 
 
-// // GET INSULIN AND GLUCOSE function getData(){
-
-// var docGlu = db.collection("users").doc("arsa@car.com").collection("glucose").doc("glucoseId");
-// var docIns = db.collection("users").doc("arsa@car.com").collection("insulin").doc("insulinId");
-
-// docGlu.get().then(function (doc) {
-//     if (doc.exists) {
-//         numberGlucosesToday.textContent = doc.data().value;
-//         console.log("Document data:", doc.data());
-//     } else {
-//         // doc.data() will be undefined in this case
-//         console.log("No such document!");
-//     }
-// }).catch(function (error) {
-//     console.log("Error getting document:", error);
-// });
-
-// docIns.get().then(function (doc) {
-//     if (doc.exists) {
-//         numberInsulinsToday.textContent = doc.data().value;
-//         console.log("Document data:", doc.data());
-//     } else {
-//         // doc.data() will be undefined in this case
-//         console.log("No such document!");
-//     }
-// }).catch(function (error) {
-//     console.log("Error getting document:", error);
-// });
+function addInsulin() {
 
 
+    db.collection("insulin").doc("insulin"+Date.now()).set({
+           createdat: Date.now(),
+           userId: email.value,
+           updatedat: Date.now(),
+           val: unitsI.value
+       })
+           .then(function () {
+               alert("Document successfully written!");
+                
+               location.reload();
 
-// // document.querySelector('.level').addEventListener('click', getData);
+               
+           })
+           .catch(function (error) {
+               console.error("Error writing document: ", error);
+               console.log("ERRORRRRRRRRRRR");
+               
+           });
+
+   }
+    
+    
+
+document.getElementById('addGlucose').addEventListener("click", addGlucose);
+document.getElementById('addInsulin').addEventListener("click", addInsulin);
+
+
+
+
+
+// // GET INSULIN AND GLUCOSE 
+function getData(){
+
+var docGlu = db.collection("users").doc("arsa@car.com").collection("glucose").doc("glucoseId");
+var docIns = db.collection("users").doc("arsa@car.com").collection("insulin").doc("insulinId");
+
+docGlu.get().then(function (doc) {
+    if (doc.exists) {
+        numberGlucosesToday.textContent = doc.data().value;
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function (error) {
+    console.log("Error getting document:", error);
+});
+
+docIns.get().then(function (doc) {
+    if (doc.exists) {
+        numberInsulinsToday.textContent = doc.data().value;
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function (error) {
+    console.log("Error getting document:", error);
+});
+}
+
+
+getData();
 
 
 // // GET ALL USERS
@@ -163,4 +228,6 @@ async function storeData() {
 // });
 // }
 // deleteUser.addEventListener('click', removing)
-document.getElementById('buton').addEventListener('click', storeData);
+
+// document.getElementById('buton').addEventListener('click', storeData);
+

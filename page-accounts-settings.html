@@ -13,7 +13,7 @@
     <!-- <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" /> -->
     <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/theme2.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -169,10 +169,10 @@
 
                                 <div class="col-sm-6 mb--1">
                                         <div class="modal-instance block">
-                                            <a class="btn modal-trigger" href="#">
-                                                <span class="btn__text">
-                                                    Add Glucose
-                                                </span>
+                                            <a class="btn modal-trigger btn btn--primary" href="#">
+                                                            <span class="btn__text">Add Glucose</span>
+                                                        
+                                                                
                                             </a>
                                             <div class="modal-container">
                                                 <div class="modal-content">
@@ -185,31 +185,22 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
-                                                                    <h2>Apple Watch Sport</h2>
-                                                                    <div class="text-block">
-                                                                        <span class="type--fine-print block">Model: Watch Sport 32mm</span>
-                                                                        <span class="h4 type--strikethrough inline-block">$549.99</span>
-                                                                        <span class="h4 inline-block">$499</span>
-                                                                    </div>
+                                                                    <h2>Add new Glucose</h2>
+    
                                                                     <p>
-                                                                        Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive style upgrade with high-calibre aluminum frame and plush knobs and dials.
+                                                                        Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive
+                                                                        style upgrade with high-calibre aluminum frame and plush
+                                                                        knobs and dials.
                                                                     </p>
                                                                     <form class="form--clearfix">
                                                                         <div class="col-sm-12">
-                                                                            <div class="input-select">
-                                                                                <select name="finish">
-                                                                                    <option selected="" value="Default">Select A Finish</option>
-                                                                                    <option value="aluminum">Aluminium</option>
-                                                                                    <option value="polished">Polished Aluminium</option>
-                                                                                    <option value="gold">Rose Gold</option>
-                                                                                </select>
-                                                                            </div>
+                                                                                <input type="text" name="date" class="datepicker" required placeholder="Choose a date"/>
                                                                         </div>
                                                                         <div class="col-sm-6 col-md-4">
-                                                                            <input type="text" name="quantity" placeholder="QTY" />
+                                                                            <input type="number" id="unitsG" name="quantity" required placeholder="Units" />
                                                                         </div>
                                                                         <div class="col-sm-6 col-md-8">
-                                                                            <button type="submit" class="btn btn--primary">Add To Cart</button>
+                                                                            <button id="addGlucose" type="button" class="btn btn--primary">Add Units</button>
                                                                         </div>
                                                                     </form>
                                                                     <div>
@@ -229,71 +220,62 @@
                                         </div>
                                         <!--end of modal instance-->
                                     </div>
-                                    <div class="col-sm-6 mb--1">
-                                            <div class="modal-instance block">
-                                                <a class="btn modal-trigger" href="#">
-                                                    <span class="btn__text">
-                                                        Add Insulin
-                                                    </span>
-                                                </a>
-                                                <div class="modal-container">
-                                                    <div class="modal-content">
-                                                        <section class="imageblock feature-large bg--site border--round ">
-                                                            <div class="imageblock__content col-md-5 col-sm-4 pos-left">
-                                                                <div class="background-image-holder">
-                                                                    <img alt="image" src="img/product-small-4.jpg" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
-                                                                        <h2>Apple Watch Sport</h2>
-                                                                        <div class="text-block">
-                                                                            <span class="type--fine-print block">Model: Watch Sport 32mm</span>
-                                                                            <span class="h4 type--strikethrough inline-block">$549.99</span>
-                                                                            <span class="h4 inline-block">$499</span>
-                                                                        </div>
-                                                                        <p>
-                                                                            Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive style upgrade with high-calibre aluminum frame and plush knobs and dials.
-                                                                        </p>
-                                                                        <form class="form--clearfix">
-                                                                            <div class="col-sm-12">
-                                                                                <div class="input-select">
-                                                                                    <select name="finish">
-                                                                                        <option selected="" value="Default">Select A Finish</option>
-                                                                                        <option value="aluminum">Aluminium</option>
-                                                                                        <option value="polished">Polished Aluminium</option>
-                                                                                        <option value="gold">Rose Gold</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-6 col-md-4">
-                                                                                <input type="text" name="quantity" placeholder="QTY" />
-                                                                            </div>
-                                                                            <div class="col-sm-6 col-md-8">
-                                                                                <button type="submit" class="btn btn--primary">Add To Cart</button>
-                                                                            </div>
-                                                                        </form>
-                                                                        <div>
-                                                                            <p>
-                                                                                For more information
-                                                                                <a href="#">View Detailed Description &rarr;</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!--end of row-->
-                                                            </div>
-                                                            <!--end of container-->
-                                                        </section>
+                                <div class="col-sm-6 mb--1">
+                                    <div class="modal-instance block">
+                                            <a class="btn modal-trigger btn btn--primary" href="#">
+                                                    <span class="btn__text">Add Insulin</span>
+                                                
+                                                        
+                                    </a>
+                                        <div class="modal-container">
+                                            <div class="modal-content">
+                                                <section class="imageblock feature-large bg--site border--round ">
+                                                    <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+                                                        <div class="background-image-holder">
+                                                            <img alt="image" src="img/product-small-4.jpg" />
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
+                                                                <h2>Add new Insulin</h2>
+
+                                                                <p>
+                                                                    Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive
+                                                                    style upgrade with high-calibre aluminum frame and plush
+                                                                    knobs and dials.
+                                                                </p>
+                                                                <form class="form--clearfix">
+                                                                    <div class="col-sm-12">
+                                                                            <input type="text" name="date" class="datepicker"  required="required" placeholder="Choose a date"/>
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-4">
+                                                                        <input type="number" id="unitsI" name="quantity" required="required" placeholder="Units" />
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-8">
+                                                                        <button id="addInsulin" type="button" class="btn btn--primary">Add Units</button>
+                                                                    </div>
+                                                                </form>
+                                                                <div>
+                                                                    <p>
+                                                                        For more information
+                                                                        <a href="#">View Detailed Description &rarr;</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end of row-->
+                                                    </div>
+                                                    <!--end of container-->
+                                                </section>
                                             </div>
-                                            <!--end of modal instance-->
                                         </div>
+                                    </div>
+                                    <!--end of modal instance-->
+                                </div>
 
                             </div>
-                            
+
 
 
 

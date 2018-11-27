@@ -47,7 +47,7 @@ http://flickity.metafizzy.co
 /* ---- previous/next buttons ---- */
 
 .flickity-prev-next-button {
-  position: absolute;
+  position: relative; /* absoulute */
   top: 50%;
   width: 44px;
   height: 44px;
@@ -117,7 +117,7 @@ http://flickity.metafizzy.co
 .flickity-rtl .flickity-page-dots { direction: rtl; }
 
 button[type="button"]:not([class*='col-']) {
-  width: 2% !important;
+  width: 2% ;
 }
 
 .flickity-page-dots .dot {

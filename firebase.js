@@ -79,36 +79,39 @@ async function storeData() {
     }
 }
 
+//Modal
+
+// document.getElementById("modal").modal({backdrop: 'static', keyboard: false})  
 
 
 // GET INSULIN AND GLUCOSE function getData(){
 
-var docGlu = db.collection("users").doc("arsa@car.com").collection("glucose").doc("glucoseId");
-var docIns = db.collection("users").doc("arsa@car.com").collection("insulin").doc("insulinId");
+// var docGlu = db.collection("users").doc("arsa@car.com").collection("glucose").doc("glucoseId");
+// var docIns = db.collection("users").doc("arsa@car.com").collection("insulin").doc("insulinId");
 
-docGlu.get().then(function (doc) {
-    if (doc.exists) {
-        numberGlucosesToday.textContent = doc.data().value;
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function (error) {
-    console.log("Error getting document:", error);
-});
+// docGlu.get().then(function (doc) {
+//     if (doc.exists) {
+//         numberGlucosesToday.textContent = doc.data().value;
+//         console.log("Document data:", doc.data());
+//     } else {
+//         // doc.data() will be undefined in this case
+//         console.log("No such document!");
+//     }
+// }).catch(function (error) {
+//     console.log("Error getting document:", error);
+// });
 
-docIns.get().then(function (doc) {
-    if (doc.exists) {
-        numberInsulinsToday.textContent = doc.data().value;
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function (error) {
-    console.log("Error getting document:", error);
-});
+// docIns.get().then(function (doc) {
+//     if (doc.exists) {
+//         numberInsulinsToday.textContent = doc.data().value;
+//         console.log("Document data:", doc.data());
+//     } else {
+//         // doc.data() will be undefined in this case
+//         console.log("No such document!");
+//     }
+// }).catch(function (error) {
+//     console.log("Error getting document:", error);
+// });
 
 
 

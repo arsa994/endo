@@ -58,9 +58,6 @@ a {
   margin: 0;
   padding: 0;
 }
-
-
-
 /**! 02. Typography **/
 html {
   font-size: 87.5%;
@@ -2124,7 +2121,7 @@ section.slider .flickity-page-dots {
 .modal-instance .modal-body {
   display: none;
 }
-/* .modal-container {
+.modal-container {
   transition: 0.3s linear;
   -webkit-transition: 0.3s linear;
   -moz-transition: 0.3s linear;
@@ -2137,8 +2134,7 @@ section.slider .flickity-page-dots {
   height: 100%;
   top: 0;
   left: 0;
-} */
-
+}
 .modal-container.modal-active {
   opacity: 1;
   visibility: visible;
