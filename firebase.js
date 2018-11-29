@@ -26,7 +26,8 @@ slides = document.querySelector('.slides');
 deleteUser = document.querySelector('.deleteUser');
 
 userName = [];
-
+glucosesArr = [];
+insulinArr = [];
 var data = {
     totals: {
         glucose: 0,
@@ -165,7 +166,7 @@ function remove(s){
 db.collection("users").doc(`${userName[s]}`).delete().then(function() {
     console.log("Document successfully deleted!");
     alert(`The user${userName[s]} has been deleted`);
-    window.location = this.window.location;
+   location.reload();
 
 
 }).catch(function(error) {
@@ -173,3 +174,7 @@ db.collection("users").doc(`${userName[s]}`).delete().then(function() {
 });
 }
 // deleteUser.addEventListener('click', removing)
+
+
+
+
