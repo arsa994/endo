@@ -1705,7 +1705,7 @@ mr = (function (mr, $, window, document){
         }
 
         // Make modal scrollable
-        $(document).on('wheel mousewheel scroll','.modal-content, .modal-content .scrollable', function(evt){
+    $(document).on('wheel mousewheel scroll','.modal-content, .modal-content .scrollable', function(evt){
             if(evt.preventDefault){evt.preventDefault();}
             if(evt.stopPropagation){evt.stopPropagation();}
             this.scrollTop += (evt.originalEvent.deltaY); 
@@ -1714,6 +1714,8 @@ mr = (function (mr, $, window, document){
     ////////////////
     //////////////// End documentReady
     ////////////////
+
+
 
     mr.modals.documentReady = documentReady;
 

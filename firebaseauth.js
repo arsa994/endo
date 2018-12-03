@@ -13,7 +13,7 @@
 
 
 
-
+var userID;
 
 
 
@@ -40,12 +40,15 @@ function createUser(){
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
       removeDummy();
-      console.log(firebaseUser);
+      userID=firebaseUser.email;
+      console.log(userID);
+      
     }else{
       console.log("not logged in");
     }
 
   });
+
 
 
 
@@ -64,7 +67,8 @@ function login(){
     
           var email_id = user.email;
           console.log('uid',user.email);
-          
+          // window.location = "http://localhost/themeforest/Stack%201.3.9/page.html?id="+email.value;
+
           
           // window.location = "./a1.html";
     

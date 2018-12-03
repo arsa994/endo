@@ -139,7 +139,7 @@ db.collection("users").get().then(function (querySnapshot) {
                     <i class="icon--lg icon-Checked-User"></i>
                         <span id="userName" class="userName h5 color--primary">${userName[s]}</span>
                             <ul class="menu-vertical">
-                                <li> <a class="btn btn--primary type--uppercase" href="./page-accounts-settings.html">
+                                <li> <a class="btn btn--primary type--uppercase" onclick="klik(${s})">
                                     <span class="btn__text">update info</span> </a> <span class="block type--fine-print">
                                     </span>
                                 </li>
@@ -160,6 +160,11 @@ db.collection("users").get().then(function (querySnapshot) {
 
 });
 
+function klik(uid){
+    console.log();
+    window.location = "http://localhost/themeforest/Stack%201.3.9/page-accounts-settings.html?id="+userName[uid];
+
+}
 
 //DELETE USER
 function remove(s){
