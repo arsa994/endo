@@ -10,12 +10,12 @@ var db = firebase.firestore();
 
 // DEFINING
 
-var firstname, lastname, email, date, userName, numberInsulinsToday, numberGlucosesToday, numberInsulinsTotal, numberGlucosesTotal;
+var firstname, lastname, email, pickeddate, userName, numberInsulinsToday, numberGlucosesToday, numberInsulinsTotal, numberGlucosesTotal;
 
 firstname = document.querySelector('.firstname');
 lastname = document.querySelector('.lastname');
 email = document.querySelector('.email');
-date = document.querySelector('.datepicker');
+pickeddate = document.querySelector('.datepicker');
 numberGlucosesTotal = document.querySelector('.numberGlucosesTotal');
 numberInsulinsTotal = document.querySelector('.numberInsulinsTotal');
 numberGlucosesToday = document.querySelector('.numberGlucosesToday');
@@ -59,7 +59,7 @@ async function storeData() {
 
     try {
         await db.collection("users").doc(`${email.value}`).set({
-            birthday: date.value,
+            birthday: pickeddate.value,
             createdat: Date.now(),
             firstname: firstname.value,
             lastname: lastname.value,

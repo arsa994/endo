@@ -332,6 +332,11 @@ body {
     text-align: right;
   }
 }
+
+.fa-arrow-alt-circle-left{
+  size: 100px !important;
+}
+
 /**! 04. Element Size **/
 .height-100,
 .height-90,

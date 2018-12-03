@@ -56,54 +56,12 @@ db.collection("glucoses").where("userId", "==", params)
                         </div>
                         
                         <div class="modal-instance block col-sm-3 text-right text-center-xs">
-                            <a class="btn modal-trigger type--uppercase" onclick="showModal2()">
+                            <a class="btn modal-trigger type--uppercase" onclick="showModal2(${s})">
                                 <span class="btn__text">
                                     Edit value
                                 </span>
                             </a>       
-                            <div class="modal-container">
-                            <div class="modal-content">
-                                <section class="imageblock feature-large bg--site border--round ">
-                                    <div class="imageblock__content col-md-5 col-sm-4 pos-left">
-                                        <div class="background-image-holder">
-                                            <img alt="image" src="img/product-small-4.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
-                                                <h2>Add new Glucose</h2>
-
-                                                <p>
-                                                    Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive
-                                                    style upgrade with high-calibre aluminum frame and plush
-                                                    knobs and dials.
-                                                </p>
-                                                <form class="form--clearfix">
-                                                    <div class="col-sm-12">
-                                                            <input id="datum" type="text" name="date" class="datepicker"  required="required" placeholder="Choose a date"/>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-4">
-                                                        <input type="number" id="units" name="quantity" required="required" placeholder="Units" />
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-8">
-                                                        <button id="addGlucose" type="button" class="btn btn--primary" onclick="writeNewPost(${s})">Add Units</button>
-                                                    </div>
-                                                </form>
-                                                <div>
-                                                    <p>
-                                                        For more information
-                                                        <a href="#">View Detailed Description &rarr;</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end of row-->
-                                    </div>
-                                    <!--end of container-->
-                                </section>
-                            </div>
-                        </div>                    
+                            
                         </div>                   
                         <div class="col-sm-3 text-right text-center-xs">
                             <a class="btn type--uppercase" onclick="remove(${s})">
@@ -128,9 +86,12 @@ db.collection("glucoses").where("userId", "==", params)
         console.log("Error getting documents: ", error);
     });
 
-
-function showModal2 (){
+var getIndex;
+function showModal2 (s){
     $(".modal-container").addClass('modal-active');
+    getIndex = s;
+   
+    
 };
 
 
@@ -147,19 +108,24 @@ function remove(s){
     }
 
 
-function writeNewPost(uid) {
+function writeNewPost() {
+    var ref = db.collection("glucoses").doc(`glucose${glucosesArr[getIndex].createdat}`)
 
-        var postData = {
-            val: units,
-            date: Date.now(),
-            
-        };
+    // Set the "capital" field of the city 'DC'
+    return ref.update({
+        updatedat: Date.now(),
+        userId: params,
+        val: units.value
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+        location.reload();
+
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
     
-        var newPostKey = firebase.database().ref().child('posts').push().key;
-    
-        var updates = {};
-        updates['/posts/' + newPostKey] = postData;
-        updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-    
-        return firebase.database().ref().update(updates);
+      
     }

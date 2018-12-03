@@ -1,11 +1,26 @@
 //GET ALL GLUCOSES
 var db = firebase.firestore();
 slides = document.getElementById('slides');
+datum = document.getElementById('datum');
+units = document.getElementById('units');
 
 insulinsArr = [];
 insulinsArrDate = [];
 insulinsArrValue = [];
 
+var params;
+        
+
+if (location.search) {
+    var parts = location.search.substring(1).split('?');
+
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        params = nv[1];
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
 db.collection("insulin").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
@@ -40,14 +55,14 @@ db.collection("insulin").get().then(function (querySnapshot) {
                             </p>
                         </div>
                         
-                        <div class="col-sm-3 text-right text-center-xs">
-                            <a class="btn type--uppercase" href="#">
+                        <div class="modal-instance block col-sm-3 text-right text-center-xs">
+                            <a class="btn modal-trigger type--uppercase" onclick="showModal2(${s})">
                                 <span class="btn__text">
                                     Edit value
                                 </span>
-                            </a>
+                            </a>       
                             
-                        </div>
+                        </div>                   
                         <div class="col-sm-3 text-right text-center-xs">
                             <a class="btn type--uppercase" onclick="remove(${s})">
                                 <span class="btn__text">
@@ -69,6 +84,13 @@ db.collection("insulin").get().then(function (querySnapshot) {
 
 
 });
+var getIndex;
+function showModal2(s){
+    $(".modal-container").addClass('modal-active');
+    getIndex = s;
+   
+    
+};
 function remove(s){
     db.collection("insulin").doc(`insulin${insulinsArr[s].createdat}`).delete().then(function() {
         console.log("Document successfully deleted! insulin"+insulinsArr[s].createdat);
@@ -80,3 +102,25 @@ function remove(s){
         console.error("Error removing document: ", error);
     });
     }
+    
+function writeNewPost() {
+        var ref = db.collection("insulin").doc(`insulin${insulinsArrValue[getIndex].createdat}`)
+    
+        // Set the "capital" field of the city 'DC'
+        return ref.update({
+            updatedat: Date.now(),
+            userId: params,
+            val: units.value
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            location.reload();
+    
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+        
+          
+        }
