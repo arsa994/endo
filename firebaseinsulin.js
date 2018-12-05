@@ -1,15 +1,13 @@
 //GET ALL Insulins
 var db = firebase.firestore();
 slides = document.getElementById('slides');
-datum = document.getElementById('datum');
+picker2 = document.getElementById('datum');
 units = document.getElementById('units');
 
 insulinsArr = [];
-insulinsArrDate = [];
-insulinsArrValue = [];
 
 var params;
-var docid;
+var docid=[];
 
 
 if (location.search) {
@@ -27,17 +25,14 @@ db.collection("insulin").where("userId", "==", params)
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            docid = doc.id;
-            console.log(doc.id, " => ", doc.data());
-            insulinsArrDate.push((doc.data()).createdat);
-            insulinsArrValue.push((doc.data()).val);
+            docid.push(doc.id);
             insulinsArr.push((doc.data()));
         });
-        for (let s = 0; s < insulinsArrDate.length; s++) {
+        for (let s = 0; s < insulinsArr.length; s++) {
 
-            var d = insulinsArrDate[s];
+            var d = insulinsArr[s].createdat;
             var date = new Date(+d); 
-            console.log(date.toDateString());
+            // console.log(date.toDateString());
 
             var markup=`
             <section>
@@ -49,7 +44,7 @@ db.collection("insulin").where("userId", "==", params)
                         </div>
                         <div class="col-sm-3">
                             <p class="lead">
-                                Units: ${insulinsArrValue[s]}
+                                Units: ${insulinsArr[s].val}
                             </p>
                         </div>
                         
@@ -71,11 +66,13 @@ db.collection("insulin").where("userId", "==", params)
                     </div>
                 </div>
                 <!--end of row-->
-            </div>  </section>`;
+            </div>
+            
+            </section>`;
             
             
             
-            slides.insertAdjacentHTML("afterbegin", markup);
+            slides.insertAdjacentHTML("beforebegin", markup);
     }
     
 
@@ -87,29 +84,30 @@ db.collection("insulin").where("userId", "==", params)
 var getIndex;
 function showModal2 (s){
     $(".modal-container").addClass('modal-active');
-    getIndex = s;
+    getIndex = docid[s];
    
     
 };
 
-function remove(s){
-    db.collection("insulin").doc(docid).delete().then(function() {
-        console.log("Document successfully deleted! insulin"+insulinsArr[s].createdat);
-        alert(`The user${insulinsArr[s]} has been deleted`);
+function remove(s){ 
+    result = confirm(`Are u sure that u want to delete ${docid[s]}`);
+    if (result) {
+     db.collection("insulin").doc(docid[s]).delete().then(function() {
+        // console.log("Document successfully deleted! insulin"+insulinsArr[s].createdat);
         location.reload();
-    
-    
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
+        }
     }
     
 function writeNewPost() {
-        var ref = db.collection("insulin").doc(docid)
-    
+        var ref = db.collection("insulin").doc(getIndex)
+        var dat = new Date(picker2.value);
+
         // Set the "capital" field of the city 'DC'
         return ref.update({
-            createdat: Date.now(),
+            createdat: dat,
             updatedat: Date.now(),
             userId: params,
             val: units.value

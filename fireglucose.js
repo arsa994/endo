@@ -2,17 +2,15 @@
 //GET ALL GLUCOSES
 var db = firebase.firestore();
 slides = document.getElementById('slides');
-datum = document.getElementById('datum');
 units = document.getElementById('units');
+picker2 = document.getElementById('datum');
 
 
 
 glucosesArr = [];
-glucosesArrDate = [];
-glucosesArrValue = [];
 
 var params;
-var docid;
+var docid=[];
 
 if (location.search) {
     var parts = location.search.substring(1).split('?');
@@ -29,19 +27,16 @@ db.collection("glucoses").where("userId", "==", params)
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            docid = doc.id;
-            
-            
-            glucosesArrDate.push((doc.data()).createdat);
-            glucosesArrValue.push((doc.data()).val);
-            glucosesArr.push((doc.data()));
+            docid.push(doc.id);
+            glucosesArr.push(doc.data());
         });
-        for (let s = 0; s < glucosesArrDate.length; s++) {
+        for (let s = 0; s < glucosesArr.length; s++) {
+            // console.log(glucosesArr[s].createdat.getTime()+"=====");
 
-            var d = glucosesArrDate[s];
+            var d = glucosesArr[s].createdat;
             var date = new Date(+d); 
             // console.log(glucosesArr[0]);
-            console.log(date.toDateString());
+            // console.log(date.toDateString());
 
             var markup=`
             <section>
@@ -53,7 +48,7 @@ db.collection("glucoses").where("userId", "==", params)
                         </div>
                         <div class="col-sm-3">
                             <p class="lead">
-                                Units: ${glucosesArrValue[s]}
+                                Units: ${glucosesArr[s].val}
                             </p>
                         </div>
                         
@@ -75,11 +70,15 @@ db.collection("glucoses").where("userId", "==", params)
                     </div>
                 </div>
                 <!--end of row-->
-            </div>  </section>`;
+            </div>  
+        
+            
+            </section>
+            `;
             
             
             
-            slides.insertAdjacentHTML("afterbegin", markup);
+            slides.insertAdjacentHTML("beforebegin", markup);
     }
     
 
@@ -89,33 +88,35 @@ db.collection("glucoses").where("userId", "==", params)
     });
 
 var getIndex;
-function showModal2 (s){
+function showModal2(s){
     $(".modal-container").addClass('modal-active');
-    getIndex = s;
-   
+    getIndex = docid[s];
+    console.log(docid[s]+" = = = ="+params);
+
     
 };
 
 
 function remove(s){
-    db.collection("glucoses").doc(docid).delete().then(function() {
-        console.log("Document successfully deleted! glucose"+glucosesArr[s].createdat);
-        alert(`The user${glucosesArr[s]} has been deleted`);
+    result = confirm(`Are u sure that u want to delete ${docid[s]}`);
+    if (result) {
+     db.collection("glucoses").doc(docid[s]).delete().then(function() {
         location.reload();
-    
-    
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
+        }
     }
 
 
 function writeNewPost() {
-    var ref = db.collection("glucoses").doc(docid)
+    console.log(getIndex);
+    var ref = db.collection("glucoses").doc(getIndex);
+    var dat = new Date(picker2.value);
 
     // Set the "capital" field of the city 'DC'
     return ref.update({
-        createdat: Date.now(),
+        createdat: dat,
         updatedat: Date.now(),
         userId: params,
         val: units.value
