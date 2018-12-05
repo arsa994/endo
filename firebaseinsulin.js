@@ -1,4 +1,4 @@
-//GET ALL GLUCOSES
+//GET ALL Insulins
 var db = firebase.firestore();
 slides = document.getElementById('slides');
 datum = document.getElementById('datum');
@@ -9,7 +9,8 @@ insulinsArrDate = [];
 insulinsArrValue = [];
 
 var params;
-        
+var docid;
+
 
 if (location.search) {
     var parts = location.search.substring(1).split('?');
@@ -21,24 +22,21 @@ if (location.search) {
         params[nv[0]] = nv[1] || true;
     }
 }
-db.collection("insulin").get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", (doc.data()).firstname);
-        insulinsArrDate.push((doc.data()).createdat);
-        insulinsArrValue.push((doc.data()).val);
-        insulinsArr.push((doc.data()));
+db.collection("insulin").where("userId", "==", params)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            docid = doc.id;
+            console.log(doc.id, " => ", doc.data());
+            insulinsArrDate.push((doc.data()).createdat);
+            insulinsArrValue.push((doc.data()).val);
+            insulinsArr.push((doc.data()));
+        });
+        for (let s = 0; s < insulinsArrDate.length; s++) {
 
-
-
-        // console.log(userName.length);
-
-    });
-
-    for (let s = 0; s < insulinsArrDate.length; s++) {
-             var d = insulinsArrDate[s];
+            var d = insulinsArrDate[s];
             var date = new Date(+d); 
-            // console.log(glucosesArr[0]);
             console.log(date.toDateString());
 
             var markup=`
@@ -80,19 +78,22 @@ db.collection("insulin").get().then(function (querySnapshot) {
             slides.insertAdjacentHTML("afterbegin", markup);
     }
     
-   
 
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
 
-});
 var getIndex;
-function showModal2(s){
+function showModal2 (s){
     $(".modal-container").addClass('modal-active');
     getIndex = s;
    
     
 };
+
 function remove(s){
-    db.collection("insulin").doc(`insulin${insulinsArr[s].createdat}`).delete().then(function() {
+    db.collection("insulin").doc(docid).delete().then(function() {
         console.log("Document successfully deleted! insulin"+insulinsArr[s].createdat);
         alert(`The user${insulinsArr[s]} has been deleted`);
         location.reload();
@@ -104,10 +105,11 @@ function remove(s){
     }
     
 function writeNewPost() {
-        var ref = db.collection("insulin").doc(`insulin${insulinsArrValue[getIndex].createdat}`)
+        var ref = db.collection("insulin").doc(docid)
     
         // Set the "capital" field of the city 'DC'
         return ref.update({
+            createdat: Date.now(),
             updatedat: Date.now(),
             userId: params,
             val: units.value

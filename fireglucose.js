@@ -12,7 +12,7 @@ glucosesArrDate = [];
 glucosesArrValue = [];
 
 var params;
-        
+var docid;
 
 if (location.search) {
     var parts = location.search.substring(1).split('?');
@@ -29,7 +29,9 @@ db.collection("glucoses").where("userId", "==", params)
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
+            docid = doc.id;
+            
+            
             glucosesArrDate.push((doc.data()).createdat);
             glucosesArrValue.push((doc.data()).val);
             glucosesArr.push((doc.data()));
@@ -96,7 +98,7 @@ function showModal2 (s){
 
 
 function remove(s){
-    db.collection("glucoses").doc(`glucose${glucosesArr[s].createdat}`).delete().then(function() {
+    db.collection("glucoses").doc(docid).delete().then(function() {
         console.log("Document successfully deleted! glucose"+glucosesArr[s].createdat);
         alert(`The user${glucosesArr[s]} has been deleted`);
         location.reload();
@@ -109,10 +111,11 @@ function remove(s){
 
 
 function writeNewPost() {
-    var ref = db.collection("glucoses").doc(`glucose${glucosesArr[getIndex].createdat}`)
+    var ref = db.collection("glucoses").doc(docid)
 
     // Set the "capital" field of the city 'DC'
     return ref.update({
+        createdat: Date.now(),
         updatedat: Date.now(),
         userId: params,
         val: units.value

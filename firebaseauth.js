@@ -14,7 +14,7 @@
 
 
 var userID;
-
+var email_id;
 
 
 function removeDummy() {
@@ -50,7 +50,7 @@ function createUser(){
   });
 
 
-
+     
 
  
 function login(){
@@ -60,20 +60,17 @@ function login(){
   firebase.auth().signInWithEmailAndPassword(email.value, pass.value).then(user=>{
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        var user = firebase.auth().currentUser;
+       var user = firebase.auth().currentUser;
         // var credential = firebase.auth.EmailAuthProvider.credential(email, pass);
 
         if(user != null){
     
-          var email_id = user.email;
+          email_id = user.email;
           console.log('uid',user.email);
-          // window.location = "http://localhost/themeforest/Stack%201.3.9/page.html?id="+email.value;
+          window.location = "http://localhost/themeforest/Stack%201.3.9/page.html?id="+email_id;
 
-          
-          // window.location = "./a1.html";
-    
-    
-          // alert('welcome')
+
+
         }
       }
        else {
@@ -102,6 +99,17 @@ function logout(){
   location.reload();
 }
 
+// export default function getCurrentUser(){
+//   // firebase.auth().onAuthStateChanged(firebaseUser => {
+//   //   if(firebaseUser){
+//   //     // removeDummy();
+//   //     userID=firebaseUser.email;
+//       console.log("ajmo ajdeee");
+//   //     return userID;
+      
+//   //   }else{
+//   //     console.log("not logged in");
+//   //   }
 
-
-  
+//   // })
+// }

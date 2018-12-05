@@ -1,3 +1,4 @@
+// import firebaseauth from "./firebaseauth"
 var db = firebase.firestore();
 
 
@@ -80,6 +81,7 @@ async function storeData() {
     }
 }
 
+
 //Modal
 
 // document.getElementById("modal").modal({backdrop: 'static', keyboard: false})  
@@ -161,7 +163,7 @@ db.collection("users").get().then(function (querySnapshot) {
 });
 
 function klik(uid){
-    console.log();
+    
     window.location = "http://localhost/themeforest/Stack%201.3.9/page-accounts-settings.html?id="+userName[uid];
 
 }
@@ -179,6 +181,7 @@ db.collection("users").doc(`${userName[s]}`).delete().then(function() {
 });
 }
 // deleteUser.addEventListener('click', removing)
+
 
 
 
