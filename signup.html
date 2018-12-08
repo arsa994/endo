@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400i,600,700" rel="stylesheet" type="text/css">
+        <link href="css/font-sourcesanspro.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body data-smooth-scroll-offset="77">
+        <div class="nav-container"> </div>
+        <div class="main-container">
+            <section class="imageblock switchable feature-large space--md bg--secondary">
+                <div class="imageblock__content col-md-6 col-sm-4 pos-right">
+                    <div class="background-image-holder"> <img alt="image" src="img/inner-3.jpg"> </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-7">
+                            <h2>Create an account</h2>
+                            <p class="lead">Get started with a 14 day free trial,<br class="hidden-xs hidden-sm"> No credit card required.</p>
+                            <form>
+                                <div class="row">
+                                    <div class="col-xs-12"> <input id="email" type="email" name="Email Address" placeholder="Email Address"> </div>
+                                    <div class="col-xs-12"> <input id="pass" type="password" name="Password" placeholder="Password"> </div>
+                                    <div class="col-xs-12"> <button type="button" onclick="createUser()" class="btn btn--primary type--uppercase">Create Account</button> </div>
+                                    <div class="col-xs-12"> <span class="type--fine-print">By signing up, you agree to the <a href="#">Terms of Service</a></span> </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyAl8gFwLFWLevZ3aYzsga1exeVuec0jmRw",
+            authDomain: "endoapp-f0ab3.firebaseapp.com",
+            databaseURL: "https://endoapp-f0ab3.firebaseio.com",
+            projectId: "endoapp-f0ab3",
+            storageBucket: "endoapp-f0ab3.appspot.com",
+            messagingSenderId: "613564949146"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
+        <script src="./auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/scripts.js"></script>
+
+    </body>
+
+</html>

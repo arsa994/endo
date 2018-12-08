@@ -25,17 +25,6 @@ function removeDummy() {
 
 
 
-function createUser(){
-  
-    var email = document.getElementById("email").value;
-    var pass = document.getElementById("pass").value;
-    const auth = firebase.auth();
-
-    
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise
-    .catch(e=>console.log(e.message));
-  }
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
