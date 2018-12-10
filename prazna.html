@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stack Multipurpose HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site Description Here">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" /> -->
+    <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/theme2.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+
+<body class=" ">
+    <a id="start"></a>
+
+    <div class="notification pos-top pos-right search-box bg--white border--bottom" data-animation="from-top" data-notification-link="search-box">
+        <form>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <input type="search" name="query" placeholder="Type search query and hit enter" />
+                </div>
+            </div>
+            <!--end of row-->
+        </form>
+    </div>
+    <!--end of notification-->
+    
+
+    <div class="main-container">
+                    
+                
+        <section class="bg--secondary space--sm">
+                
+            <div class="container">
+                    <a href="#" onclick="history.go(-1)"> <i class="fas fa-arrow-alt-circle-left" style="font-size: 40px;"></i> 
+                    </a>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="boxed boxed--lg boxed--border">
+                            <div class="text-block text-center">
+                                <img alt="avatar" src="img/avatar-round-3.png" class="image--sm" />
+                                <span class="h5">Lucas Banks</span>
+                                <span>Pro Account</span>
+                                <span class="label">Pro</span>
+                            </div>
+                            <hr>
+                            <div class="text-block">
+                                <ul class="menu-vertical">
+                                    <li>
+                                        <a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-profile;hidden">Personal Information</a>
+                                    </li>
+                                    <li>
+                                        <a class="level" href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-notifications;hidden">Glucose/Insulin Level</a>
+                                    </li>
+                                    <!-- <li>
+                                            <a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-billing;hidden">Billing Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-password;hidden">Password</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-delete;hidden">Delete Account</a>
+                                        </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="boxed boxed--lg boxed--border">
+                            <div id="account-profile" class="account-tab">
+                                <h4>Profile</h4>
+                                <form onsubmit="return false;">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>First Name:</label>
+                                            <input class="firstname" type="text" name="firstname" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Last Name:</label>
+                                            <input class="lastname" type="text" name="lastname" />
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label>Email Address:</label>
+                                            <input class="email" type="email" name="email" value="" required placeholder="Enter a valid email address">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label>Date of birth:</label>
+                                            <input id="picker" type="text" name="date" class="datepicker" placeholder="Choose a date" />
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-checkbox input-checkbox--switch">
+                                                <div class="inner"></div>
+                                                <input type="checkbox" name="public-profile" />
+                                            </div>
+                                            <span>Allow my profile to be viewable by guests</span>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4">
+                                            <button id="buton" type="submit"   class="btn btn--primary type--uppercase">Save Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="account-notifications" class="hidden account-tab" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="lead">
+                                            <b>
+                                                <i>
+                                                    Number of glucoses total</p>
+                                        <div class="col-md-6 text-center">
+                                            <span class="h2">
+                                                <span class="numberGlucosesTotal"></span>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <p class="lead">
+                                            <b>
+                                                <i>
+                                                    Number of insulins total </p>
+                                        <div class="col-md-6 text-center">
+                                            <span class="h2">
+                                                <span class="numberInsulinsTotal"></span>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="row">
+                                    <div class="abc col-md-6">
+                                        <p class="lead">
+                                            <b>
+                                                <i>
+                                                    Number of glucoses today </p>
+                                        <div class="col-md-6 text-center">
+                                            <span class="h2">
+                                                <span class="numberGlucosesToday"></span>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <p class="lead">
+                                            <b>
+                                                <i>
+                                                    Number of insulins today</p>
+                                        <div class="col-md-6 text-center">
+                                            <span class="h2">
+                                                <span class="numberInsulinsToday"></span>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 mb--1">
+                                        <div class="modal-instance block">
+                                            <a id="btng" class="btn modal-trigger btn btn--primary" href="#">
+                                                            <span class="btn__text">Add Glucose</span>
+                                                        
+                                                                
+                                            </a>
+                                            <div class="modal-container">
+                                                <div class="modal-content">
+                                                    <section class="imageblock feature-large bg--site border--round ">
+                                                        <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+                                                            <div class="background-image-holder">
+                                                                <img alt="image" src="img/product-small-4.jpg" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
+                                                                    <h2>Add new Glucose</h2>
+    
+                                                                    <p>
+                                                                        Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive
+                                                                        style upgrade with high-calibre aluminum frame and plush
+                                                                        knobs and dials.
+                                                                    </p>
+                                                                    <form class="form--clearfix">
+                                                                        <div class="col-sm-12">
+                                                                                <input id="picker1" type="text" name="date" class="datepicker" required placeholder="Choose a date"/>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <input type="number" id="unitsG" name="quantity" required placeholder="Units" />
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-8">
+                                                                            <button id="addGlucose" type="button" class="btn btn--primary">Add Units</button>
+                                                                        </div>
+                                                                    </form>
+                                                                    <div>
+                                                                        <p>
+                                                                            For more information
+                                                                            <a href="#">View Detailed Description &rarr;</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end of row-->
+                                                        </div>
+                                                        <!--end of container-->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end of modal instance-->
+                                    </div>
+                                    <div class="col-sm-3 mb--1">
+                                            <div class="modal-instance block">
+                                                <a id="btngh" class="btn btn--primary" onclick="klik()">
+                                                                <span class="btn__text">Glucose History</span>
+                                                            
+                                                                    
+                                                </a>
+                                               
+                                            </div>
+                                            <!--end of modal instance-->
+                                        </div>
+                                    
+                                <div class="col-sm-3 mb--1">
+                                    <div class="modal-instance block">
+                                            <a id="btni" class="btn modal-trigger btn btn--primary" >
+                                                    <span class="btn__text">Add Insulin</span>
+                                                
+                                                        
+                                    </a>
+                                        <div class="modal-container">
+                                            <div class="modal-content">
+                                                <section class="imageblock feature-large bg--site border--round ">
+                                                    <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+                                                        <div class="background-image-holder">
+                                                            <img alt="image" src="img/product-small-4.jpg" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
+                                                                <h2>Add new Insulin</h2>
+
+                                                                <p>
+                                                                    Tivoli's most popular line of consumer digital radios just got a refresh &mdash; expect clearer highs and deeper lows. Massive
+                                                                    style upgrade with high-calibre aluminum frame and plush
+                                                                    knobs and dials.
+                                                                </p>
+                                                                <form class="form--clearfix">
+                                                                    <div class="col-sm-12">
+                                                                            <input id="picker2" type="text" name="date" class="datepicker"  required="required" placeholder="Choose a date"/>
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-4">
+                                                                        <input type="number" id="unitsI" name="quantity" required="required" placeholder="Units" />
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-8">
+                                                                        <button id="addInsulin" type="button" class="btn btn--primary">Add Units</button>
+                                                                    </div>
+                                                                </form>
+                                                                <div>
+                                                                    <p>
+                                                                        For more information
+                                                                        <a href="#">View Detailed Description &rarr;</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end of row-->
+                                                    </div>
+                                                    <!--end of container-->
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end of modal instance-->
+                                </div>
+                                <div class="col-sm-3 mb--1">
+                                        <div class="modal-instance block">
+                                                <a id="btnih"class="btn btn--primary" onclick="klik2()">
+                                                        <span class="btn__text">Insulin History</span>
+                                                    
+                                                            
+                                        </a>
+                                            
+                                        </div>
+                                        <!--end of modal instance-->
+                                    </div>
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+
+    </div>
+    <!--<div class="loader"></div>-->
+    <a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
+        <i class="stack-interface stack-up-open-big"></i>
+    </a>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAl8gFwLFWLevZ3aYzsga1exeVuec0jmRw",
+            authDomain: "endoapp-f0ab3.firebaseapp.com",
+            databaseURL: "https://endoapp-f0ab3.firebaseio.com",
+            projectId: "endoapp-f0ab3",
+            storageBucket: "endoapp-f0ab3.appspot.com",
+            messagingSenderId: "613564949146"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- <script src="js/flickity.min.js"></script> -->
+    <script src="./firebaseauth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="./firebase3.js"></script>
+    <script src="js/easypiechart.min.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/ytplayer.min.js"></script>
+    <script src="js/lightbox.min.js"></script>
+    <script src="js/granim.min.js"></script>
+    <script src="js/jquery.steps.min.js"></script>
+    <script src="js/countdown.min.js"></script>
+    <script src="js/twitterfetcher.min.js"></script>
+    <script src="js/spectragram.min.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
